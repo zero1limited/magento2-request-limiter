@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Config/etc/config.xsd">
+    <default>
+        <zero1_request_limiter>
+            <general>
+                <enabled>0</enabled>
+                <concurrent_requests>5</concurrent_requests>
+                <min_query_filters>3</min_query_filters>
+                <maintenance_page>0</maintenance_page>
+            </general>
+        </zero1_request_limiter>
+    </default>
+</config>

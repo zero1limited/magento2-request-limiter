@@ -1,0 +1,44 @@
+<?php
+/** @var \Zero1\RequestLimiter\Block\Adminhtml\Requests\Listing $block */
+$requests = $block->getRequests();
+$refreshConfig = [
+    'url' => $block->getUrl('request_limiter/requests/data'),
+    'interval' => 5000,
+];
+?>
+<div data-mage-init='<?= $block->escapeHtmlAttr(json_encode([
+    'Zero1_RequestLimiter/js/requests' => $refreshConfig,
+], JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT)) ?>'>
+    <div class="admin__toolbar">
+        <button type="button" class="action-secondary" data-role="toggle-auto-refresh" aria-pressed="false">
+            <span><?= $block->escapeHtml(__('Start Auto Refresh')) ?></span>
+        </button>
+        <span class="admin__control-support-text" data-role="refresh-status" aria-live="polite"></span>
+    </div>
+    <div class="admin__data-grid-wrap admin__data-grid-wrap-static" data-role="requests-list">
+        <?php if ($requests): ?>
+            <table class="data-grid">
+                <thead>
+                    <tr>
+                        <th class="data-grid-th"><span><?= $block->escapeHtml(__('Request URL')) ?></span></th>
+                        <th class="data-grid-th"><span><?= $block->escapeHtml(__('Concurrent Requests at Rejection')) ?></span></th>
+                        <th class="data-grid-th"><span><?= $block->escapeHtml(__('Marker Expires In')) ?></span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($requests as $request): ?>
+                        <tr>
+                            <td><?= $block->escapeHtml($request['path']) ?></td>
+                            <td><?= (int)$request['concurrent_requests'] ?></td>
+                            <td><?= (int)$request['expires_in'] ?> <?= $block->escapeHtml(__('seconds')) ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        <?php else: ?>
+            <div class="message message-notice notice">
+                <div><?= $block->escapeHtml(__('There are no currently rate-limited requests.')) ?></div>
+            </div>
+        <?php endif; ?>
+    </div>
+</div>

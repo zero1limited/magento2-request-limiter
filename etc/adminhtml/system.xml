@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="zero1_request_limiter" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Request Limiter</label>
+            <tab>service</tab>
+            <resource>Magento_Config::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>General</label>
+                <field id="enabled" translate="label comment" type="select" sortOrder="5" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Rate Limiting</label>
+                    <comment>When disabled, eligible category and search requests are not rate limited.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="concurrent_requests" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Concurrent Requests</label>
+                    <comment>Maximum concurrent requests allowed for one resource. This must be less then max_children in PHPFPM</comment>
+                    <validate>validate-digits validate-greater-than-zero</validate>
+                </field>
+                <field id="min_query_filters" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Min Query Filters</label>
+                    <comment>Minimum number of query parameters required to apply the limit.</comment>
+                    <validate>validate-digits validate-greater-than-zero</validate>
+                </field>
+                <field id="maintenance_page" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Maintenance Response CMS Page</label>
+                    <comment>Content of this CMS page is shown when a request is rate limited. Use {{var request_url}} to insert the requested URL without query parameters. Leave unselected to use the default message.</comment>
+                    <source_model>Magento\Cms\Model\Config\Source\Page</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

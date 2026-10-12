@@ -1,0 +1,13 @@
+{
+    "name": "zero1/request-limiter",
+    "description": "Request limiter for Magento 2",
+    "type": "magento2-module",
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Zero1\\RequestLimiter\\": ""
+        }
+    }
+}

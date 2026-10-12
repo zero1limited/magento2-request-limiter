@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Zero1\RequestLimiter\Block\Adminhtml\Requests\Listing" name="zero1.request_limiter.requests" template="Zero1_RequestLimiter::requests/listing.phtml" />
+        </referenceContainer>
+    </body>
+</page>

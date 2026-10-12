@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Zero1_RequestLimiter::view" title="Rate-Limited Requests" module="Zero1_RequestLimiter" sortOrder="90" parent="Magento_Backend::system" action="request_limiter/requests/index" resource="Zero1_RequestLimiter::view" />
+    </menu>
+</config>
